@@ -1,0 +1,83 @@
+<div class="column small-12 medium-6">
+    <div data-materialInput>
+        <select name="" id="activity" class="activity_select_toogler"
+                required aria-errormessage="error-activity">
+            <option value=""></option>
+            <option value="licensee">Licencié club</option>
+            <option value="skiingschool">Moniteur de ski</option>
+            <option value="guide">Pisteur / Guide</option>
+        </select>
+        <label for="activity">Activité</label>
+        <span class="form-error" id="error-activity">Champ requis</span>
+    </div>
+</div>
+<div class="column medium-6 hide-for-small-only"></div>
+{#Licencié club#}
+<div class="column small-12 medium-6 licensee activity">
+    <div data-materialInput>
+        <input type="text" placeholder="N° de licence"
+               required aria-errormessage="error-licensee-number" pattern="alpha_numeric">
+        <label>N° de licence</label>
+        <span class="form-error" id="error-licensee-number">Champ requis ou invalide</span>
+    </div>
+</div>
+<div class="column small-12 medium-6 licensee activity">
+    <div data-materialInput>
+        <input type="text" placeholder="Nom du club"
+               required aria-errormessage="error-club-name" pattern="alpha_numeric">
+        <label>Nom du club</label>
+        <span class="form-error" id="error-club-name">Champ requis ou invalide</span>
+    </div>
+</div>
+<div class="column small-12 licensee activity">
+    <div data-niceInputFile>
+        <span class="is-label">Copie de la licence</span>
+        <label for="licenceCopy">Choisir un fichier</label>
+        <span class="file-name"></span>
+        <input type="file" id="licenceCopy" class="show-for-sr"
+               required aria-errormessage="error-club-name">
+        <span class="form-error" id="error-licenceCopy">Champ requis ou invalide</span>
+    </div>
+</div>
+{#Moniteur de ski#}
+<div class="column small-12 medium-6 skiingschool activity">
+    <div data-materialInput>
+        <input type="text" placeholder="N° Carte Syndicale"
+               required aria-errormessage="error-syndical-card" pattern="alpha_numeric">
+        <label>N° Carte Syndicale</label>
+        <span class="form-error" id="error-syndical-card">Champ requis ou invalide</span>
+    </div>
+</div>
+<div class="column medium-6 hide-for-small-only skiingschool activity"></div>
+
+<div class="column small-12 skiingschool activity">
+    <div data-niceInputFile>
+        <span class="is-label">Copie de la carte syndicale</span>
+        <label for="syndicalCardCopy">Choisir un fichier</label>
+        <span class="file-name"></span>
+        <input type="file" id="syndicalCardCopy" class="show-for-sr"
+               required aria-errormessage="error-syndicalCardCopy">
+        <span class="form-error" id="error-syndicalCardCopy">Champ requis ou invalide</span>
+    </div>
+</div>
+{#Pisteur / Guide#}
+<div class="column small-12 medium-6 guide activity">
+    <div data-materialInput>
+        <input type="text" placeholder="Station"
+               required aria-errormessage="error-station" pattern="alpha_numeric">
+        <label>Station</label>
+        <span class="form-error" id="error-station">Champ requis ou invalide</span>
+    </div>
+</div>
+<div class="column medium-6 hide-for-small-only guide activity"></div>
+
+<div class="column small-12 guide activity">
+    <div data-niceInputFile>
+        <span class="is-label">Copie de la carte professionnelle</span>
+        <label for="licenceCopyGuide">Choisir un fichier</label>
+        <span class="file-name"></span>
+        <input type="file" id="licenceCopyGuide" class="show-for-sr"
+               required aria-errormessage="error-licenceCopyGuide">
+        <span class="form-error" id="error-licenceCopyGuide">Champ requis ou invalide</span>
+    </div>
+</div>

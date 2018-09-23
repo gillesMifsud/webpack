@@ -1,0 +1,20 @@
+{% block sonata_page_asset_footer %}
+	{% if page is defined %}
+    	{% if page.javascript is not empty %}
+        <script>
+            {{ page.javascript|raw }}
+        </script>
+	    {% endif %}
+        {% if page.stylesheet is not empty %}
+        	<style>
+                {{ page.stylesheet|raw }}
+            </style>
+        {% endif %}
+    {% endif %}
+    {#
+    	These includes can be done only at this point as all blocks are loaded,
+        Limitation: this does not work if a global page is loaded from an ESI tag inside a container block
+    #}
+    {{ sonata_block_include_stylesheets('screen', app.request.basePath) }}
+    {{ sonata_block_include_javascripts('screen', app.request.basePath) }}
+{% endblock %}

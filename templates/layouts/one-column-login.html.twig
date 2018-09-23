@@ -1,0 +1,20 @@
+{% extends 'layouts/base_layout.html.twig' %}
+
+{% block sonata_page_body_class %}one-column-pre-home{% endblock %}
+
+{% block sonata_page_container %}
+    <div class="content">
+        <div class="main">
+            <div class="row align-center">
+                <div class="column small-12 medium-5 align-self-middle form-box">
+                    <div class="text-center">
+                        <img src="{{ asset('/build/images/logo.png') }}" alt="Logo" class="logo"/>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. non officiis perferendis perspiciatis provident, sit vel vitae!</p>
+                    </div>
+                    {% include 'integration_graphique/layouts/inc/login_form.html.twig' %}
+                </div>
+            </div>
+        </div>
+        {% include 'integration_graphique/layouts/inc/footer.html.twig' %}
+    </div>
+{% endblock %}

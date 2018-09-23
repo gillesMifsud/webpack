@@ -1,0 +1,7 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+{% if textHtml is defined and textHtml is not empty %}
+{{ textHtml.content|raw }}
+{% endif %}
+{% endblock %}

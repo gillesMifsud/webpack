@@ -1,0 +1,5 @@
+{% block sonata_page_javascripts %}
+    {% for js in sonata_page.assets.javascripts %}
+    <script src="{{ asset(js) }}"></script>
+    {% endfor %}
+{% endblock %}

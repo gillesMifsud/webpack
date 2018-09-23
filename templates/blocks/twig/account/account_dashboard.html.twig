@@ -1,0 +1,20 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+
+    <div class="account_dashboard">
+        <div class="row">
+            {#Mes informations#}
+            <div class="column small-12 large-5">
+                {% include 'blocks/twig/account/account_dashboard/account_dashboard_mes_informations.html.twig' %}
+            </div>
+            {#Modifier mon mot de passe#}
+            {#Mes limites de crédits#}
+            <div class="column small-12 large-5 large-offset-2">
+                {% include 'blocks/twig/account/account_dashboard/account_dashboard_mon_mdp.html.twig' %}
+                {% include 'blocks/twig/account/account_dashboard/account_dashboard_mes_limites_credit.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

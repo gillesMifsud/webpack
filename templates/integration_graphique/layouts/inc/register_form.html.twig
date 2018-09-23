@@ -1,0 +1,97 @@
+<form data-abide novalidate>
+    <div class="row">
+        {#Nom#}
+        <div class="column small-12 medium-6">
+            <div data-materialInput>
+                <input type="text" placeholder="Nom"
+                       aria-errormessage="error-nom" required pattern="alpha">
+                <label>Nom</label>
+                <span class="form-error" id="error-nom">Champ requis ou invalide</span>
+            </div>
+        </div>
+        {#Prenom#}
+        <div class="column small-12 medium-6">
+            <div data-materialInput>
+                <input type="text" placeholder="Prénom"
+                       aria-errormessage="error-prenom" required pattern="alpha">
+                <label>Prénom</label>
+                <span class="form-error" id="error-prenom">Champ requis ou invalide</span>
+            </div>
+        </div>
+        {#Adresse#}
+        <div class="column small-12">
+            <div data-materialInput>
+                <input type="text" placeholder="Adresse"
+                       aria-errormessage="error-adresse" required pattern="alpha_numeric">
+                <label>Adresse</label>
+                <span class="form-error" id="error-adresse">Champ requis ou invalide</span>
+            </div>
+        </div>
+        <div class="column small-12">
+            <div data-materialInput>
+                <input type="text" placeholder="Adresse 2">
+                <label>Adresse 2</label>
+            </div>
+        </div>
+        {#Code postal#}
+        <div class="column small-12 medium-6">
+            <div data-materialInput>
+                <input type="text" placeholder="Code postal"
+                       aria-errormessage="error-codepostal" required pattern="alpha_numeric">
+                <label>Code Postal</label>
+                <span class="form-error" id="error-codepostal">Champ requis ou invalide</span>
+            </div>
+        </div>
+        {#Ville#}
+        <div class="column small-12 medium-6">
+            <div data-materialInput>
+                <input type="text" placeholder="Ville"
+                       aria-errormessage="error-ville" required pattern="alpha">
+                <label>Ville</label>
+                <span class="form-error" id="error-ville">Champ requis ou invalide</span>
+            </div>
+        </div>
+        {#Pays#}
+        <div class="column small-12 medium-6">
+            <div data-materialInput>
+                <select name="" id="pays" required aria-errormessage="error-pays">
+                    <option value=""></option>
+                    <option value="france">France</option>
+                    <option value="deutschland">Deutschland</option>
+                    <option value="england">England</option>
+                </select>
+                <label for="pays">Pays</label>
+                <span class="form-error" id="error-pays">Champ requis</span>
+            </div>
+        </div>
+        <div class="column"></div> {#Empty column to fill desktop gap#}
+        {#Telephone#}
+        <div class="column small-12 medium-6">
+            <div data-materialInput>
+                <input type="text" placeholder="Téléphone"
+                       required aria-errormessage="error-telephone" pattern="alpha_numeric">
+                <label>Téléphone</label>
+                <span class="form-error" id="error-telephone">Champ requis ou invalide</span>
+            </div>
+        </div>
+        {#Email#}
+        <div class="column small-12 medium-6">
+            <div data-materialInput>
+                <input type="email" placeholder="email@example.com"
+                       required aria-errormessage="error-email" pattern="email">
+                <label>Email</label>
+                <span class="form-error" id="error-email">Champ requis ou invalide</span>
+            </div>
+        </div>
+        {#Activité#}
+        {% include 'integration_graphique/layouts/inc/register_form_select_activity.html.twig' %}
+        {#Submit#}
+        <div class="column small-12">
+            <p class="text-center">
+                <button type="submit" class="button">
+                    Créer le compte
+                </button>
+            </p>
+        </div>
+    </div>
+</form>

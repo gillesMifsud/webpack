@@ -1,0 +1,6 @@
+{% if object.isCompleted and object.ignoredLines %}
+    <a href="{{ path('app_import_generate_invalid', { 'id': object.id }) }}" class="btn btn-sm btn-default view_link"
+       title="Generate invalid file">
+        <i class="fa fa-exclamation-triangle"></i> Invalid
+    </a>
+{% endif %}

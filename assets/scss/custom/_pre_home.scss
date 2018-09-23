@@ -1,0 +1,108 @@
+// Common styles for Login & Register pages
+// templates/layouts/one-column-login.html.twig
+// templates/layouts/one-column-register.html.twig
+
+body.one-column-pre-home {
+  background: url("/build/images/pre-home-bg.png") no-repeat center center fixed;
+  background-size: cover;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .main {
+    flex: 1 0 auto;
+
+    @include breakpoint(medium) {
+      > .row.align-center {
+        height: calc(100vh - 80px);
+      }
+    }
+  }
+
+  .form-box {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: $global-padding 2*$global-padding;
+
+    @include breakpoint(large) {
+      padding: rem-calc(60);
+    }
+    // Register only styles
+    &.register {
+      > .text-center > p {
+        @include breakpoint(large) {
+          width: rem-calc(200);
+        }
+      }
+      h2 {
+        @include breakpoint(large) {
+          text-align: center;
+          padding: $global-padding 0;
+          color: $black;
+        }
+      }
+      .tabs {
+        justify-content: center;
+        display: flex;
+        border-bottom: 0;
+
+        .tabs-title {
+          text-align: center;
+          flex-grow: 1;
+        }
+      }
+      .tabs-content {
+        @include tabs-content($background: transparent);
+        padding-bottom: 0;
+        transition: 0.4s ease-in-out height;
+      }
+      .tabs-panel {
+        padding-bottom: 0;
+      }
+      select {
+        background-color: transparent;
+      }
+    }
+
+    .logo {
+      margin-bottom: 2*$global-margin;
+    }
+
+    form {
+      padding: 0;
+
+      > p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .lost-password {
+      display: block;
+    }
+  }
+  // Hide the toogle password in IE as type password is supported by default
+  /* IE11 */
+  @media all and (-ms-high-contrast:none) {
+    *::-ms-backdrop, .form-box {
+      background-color: #ffffff;
+    }
+  }
+  /* Microsoft Edge Browser 12+ (All) - @supports method */
+  @supports (-ms-ime-align:auto) {
+
+    .main > .row.align-center {
+      height: auto;
+      margin-top: 20px;
+    }
+  }
+  /* Safari 10.1+ (alternate method) */
+  @media not all and (min-resolution:.001dpcm)
+  { @supports (-webkit-appearance:none) {
+    .main > .row.align-center {
+      height: auto;
+      margin-top: 20px;
+    }
+  }}
+}

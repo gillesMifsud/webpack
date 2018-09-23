@@ -1,0 +1,67 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+
+    <div class="account_savedcarts">
+        <div class="row">
+            <div class="columns">
+
+                <h2>Mes paniers sauvegardés & propositions de commandes</h2>
+
+                <table class="table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Date de mise à jour</th>
+                            <th>Nom</th>
+                            <th>Univers</th>
+                            <th>Nom du catalogue</th>
+                            <th>Type</th>
+                            <th>Total HT</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>03/05/2018</td>
+                            <td>Panier = reconnaître la vérité</td>
+                            <td>Rossignol - look</td>
+                            <td>Catalogue Skis</td>
+                            <td>Panier</td>
+                            <td>1588.00 €</td>
+                            <td>
+                                <a href="#" title="Ouvrir">
+                                    <i class="zmdi zmdi-open-in-new"></i> <span>Ouvrir</span>
+                                </a>
+                                <a href="#" title="Supprimer">
+                                    <i class="zmdi zmdi-delete"></i> <span>Supprimer</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>29/08/2018</td>
+                            <td>Panier de yoplait</td>
+                            <td>Rossignol</td>
+                            <td>VERTICAL-RAIDLIGHT</td>
+                            <td>Proposition</td>
+                            <td>1280.00 €</td>
+                            <td>
+                                <a href="#" title="Ouvrir le panier">
+                                    <i class="zmdi zmdi-open-in-new"></i> <span>Ouvrir</span>
+                                </a>
+                                <a href="#" title="Supprimer le panier">
+                                    <i class="zmdi zmdi-delete"></i> <span>Supprimer</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot></tfoot>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

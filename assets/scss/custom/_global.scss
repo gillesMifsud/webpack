@@ -1,0 +1,59 @@
+// ---- Typography ---- //
+h1,
+h2 {
+  color: $primary-color;
+  text-transform: uppercase;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  color: $black;
+}
+
+// Buttons
+// Expanded on mobile
+.button {
+  @include breakpoint(medium down) {
+    @include button-expand;
+  }
+}
+
+// ---- Breadcrumbs ---- //
+.breadcrumbs {
+  font-weight: $global-weight-bold;
+}
+// ---- Forms ---- //
+@include materialInput;
+// Checkboxes & radios
+@include niceCheckBoxesNdRadios( $checkboxColor: $primary-color);
+// Switches
+@include niceSwitchToggles($onColor: $primary-color, $offColor: $light-gray);
+// Type File
+@include niceInputFile;
+// Select
+select {
+  @include form-select;
+  padding-left: 0;
+  padding-bottom: 0;
+  border-bottom: 1px solid $medium-gray !important;
+}
+// Hidden content togglable from select
+[data-select-toogler-target] {
+  display: none;
+}
+
+// Tables
+table {
+  thead {
+    text-transform: uppercase;
+  }
+  tbody {
+    tr:not(:last-child) {
+      border-bottom: 1px solid $light-gray;
+    }
+  }
+}
+// Responsive tables
+@include tableResponsive;

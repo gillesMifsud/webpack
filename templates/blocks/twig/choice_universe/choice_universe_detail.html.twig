@@ -1,0 +1,62 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+
+    <div class="row" data-equalizer data-equalize-on="large" id="choice_universe_detail">
+
+        <div class="column small-12 large-4">
+            <div class="choice_universe_detail" data-equalizer-watch>
+                <div class="choice_universe_detail_list">
+                    <img src="{{ asset('/build/images/choice_universe_detail/equipement.png') }}" alt="Equipement">
+                    <h2>Equipement</h2>
+                </div>
+                <ul data-niceList>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="column small-12 large-4">
+            <div class="choice_universe_detail" data-equalizer-watch>
+                <div class="choice_universe_detail_list">
+                    <img src="{{ asset('/build/images/choice_universe_detail/apparel.png') }}" alt="Apparel">
+                    <h2>Apparel</h2>
+                </div>
+                <ul data-niceList>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="column small-12 large-4">
+            <div class="choice_universe_detail" data-equalizer-watch>
+                <div class="choice_universe_detail_list">
+                    <img src="{{ asset('/build/images/choice_universe_detail/bike.png') }}" alt="Bike">
+                    <h2>Bike</h2>
+                </div>
+                <ul data-niceList>
+                    <li><a href="#">Base hardgoods FW1819</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {#FLUX RSS#}
+    <div class="row choice_universe_detail_rss">
+        <div class="column small-12 large-6">
+            <img src="https://picsum.photos/300/200/?random" alt="Image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur at consequatur, expedita itaque iure, mollitia praesentium provident quaerat quasi repudiandae tempore vitae voluptate? Dolore eveniet pariatur placeat repellendus repudiandae!</p>
+        </div>
+        <div class="column small-12 large-6">
+            <img src="https://picsum.photos/300/200/?random" alt="Image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, cumque deleniti et fugiat illo, iure nihil odit quasi qui quisquam rem, soluta. Alias aperiam at consequuntur debitis eum reprehenderit ut.</p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if object.errorOutput %}
+        <div style="max-width: 480px; max-height: 120px; overflow: scroll; white-space: pre; font-family: monospace;">{{ object.errorOutput }}</div>
+    {% endif %}
+{% endblock %}

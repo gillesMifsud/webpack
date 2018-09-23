@@ -1,0 +1,51 @@
+{% extends 'layouts/base_layout.html.twig' %}
+
+{% block sonata_page_body_class %}one-column{% endblock %}
+{% block sonata_page_container %}
+
+    <div class="off-canvas-wrapper">
+        {#Hidden off-canvas left menu#}
+        {% include 'integration_graphique/page_menu.html.twig' %}
+        <div class="off-canvas-content" data-off-canvas-content>
+            {#Header#}
+            {% include 'integration_graphique/header.html.twig' %}
+            {#Main content#}
+            <main>
+                {% block sonata_page_breadcrumb %}
+                    <div class="row">
+                        <div class="columns">
+                            {{ sonata_block_render_event('breadcrumb', { 'context': 'page', 'current_uri': app.request.requestUri }) }}
+                        </div>
+                    </div>
+                {% endblock %}
+
+                {% if page is defined %}
+                    <div class="row">
+                        {% if page.name != 'global' %}
+                            {{ sonata_page_render_container('content_top', 'global') }}
+                        {% endif %}
+                        {{ sonata_page_render_container('content_top', page) }}
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    {% block page_content %}
+                        {% include 'layouts/inc/page_content.html.twig' %}
+                    {% endblock %}
+                </div>
+
+                {% if page is defined %}
+                    <div class="row">
+                        {{ sonata_page_render_container('content_bottom', page) }}
+
+                        {% if page.name != 'global' %}
+                            {{ sonata_page_render_container('content_bottom', 'global') }}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </main>
+            {#Footer#}
+            {% include 'integration_graphique/layouts/inc/footer.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

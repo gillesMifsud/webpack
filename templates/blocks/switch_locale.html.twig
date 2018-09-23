@@ -1,0 +1,14 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <ul class="switch-locale dropdown menu" data-dropdown-menu>
+        <li>
+            <a href="#">{{ app.request.locale }}</a>
+            <ul class="switch-locale menu">
+                {% for link in switchLinks %}
+                    <li{% if link.active %} class="active"{% endif %}><a href="{{ link.url }}">{{ link.locale }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+{% endblock %}

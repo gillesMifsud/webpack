@@ -1,0 +1,24 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% extends sonata_page.defaultTemplate %}
+
+{% block title %}{{ "title_page_redirected"|trans({}, 'SonataPageBundle')}}{% endblock %}
+
+{% block page_content %}
+    <div class="columns">
+        <h2>{{ "title_page_redirected"|trans({}, 'SonataPageBundle') }}</h2>
+
+        <p>
+            {{ "message_page_redirected"|trans({'%url%': response.headers.get('Location')}, 'SonataPageBundle')|raw }}
+        </p>
+        <p>N.B.: this behaviour can be deactivated. Cf. <code>%sonata.page.skip_redirection%</code>.</p>
+    </div>
+{% endblock%}

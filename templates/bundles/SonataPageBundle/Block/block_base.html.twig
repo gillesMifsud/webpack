@@ -1,0 +1,10 @@
+{% set blockSizeable = block_context is defined and block_context.getSetting('sizeable') %}
+{% if sonata_page.isEditor() %}
+<!-- start rendering, block.id: {{ block.id }} - page.id: {% if block.page|default(false) %}{{ block.page.id }}{% else %}no related page{% endif %} - name: {{ block.name }} -->
+{% endif %}
+{% if blockSizeable %}<div class="columns {{ foundationBlockSize(block_context) }}">{% endif %}
+{% block block %}EMPTY CONTENT{% endblock %}
+{% if blockSizeable %}</div>{% endif %}
+{% if sonata_page.isEditor() %}
+<!-- end rendering, block.id: {{ block.id }} - page.id: {% if block.page|default(false) %}{{ block.page.id }}{% else %}no related page{% endif %}  - name: {{ block.name }} -->
+{% endif %}

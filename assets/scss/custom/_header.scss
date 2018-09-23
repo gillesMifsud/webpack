@@ -1,0 +1,99 @@
+header.header {
+  .sticky.is-stuck.is-at-top {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+
+  .top-bar {
+    @include breakpoint(medium down) {
+      padding: $global-padding rem-calc(5);
+    }
+  }
+  .zmdi-menu {
+    cursor: pointer;
+    font-size: rem-calc(26);
+    line-height: rem-calc(28);
+
+    @include breakpoint(medium down) {
+      margin-right: rem-calc(10);
+    }
+    @include breakpoint(medium) {
+      margin-right: rem-calc(30);
+    }
+  }
+  .top-bar-left {
+    .logo {
+      height: 32px;
+      width: auto;
+      vertical-align: top;
+
+      @include breakpoint(medium down) {
+        height: rem-calc(25);
+      }
+
+      @include breakpoint(small only) {
+        height: rem-calc(20);
+        vertical-align: baseline;
+      }
+    }
+  }
+  .top-bar-right {
+    .user {
+      text-align: center;
+      padding: 0 rem-calc(30);
+
+      @include breakpoint(medium down) {
+        padding: 0 rem-calc(20);
+      }
+
+      @include breakpoint(small only) {
+        padding: 0 rem-calc(5);
+      }
+
+      .zmdi-account-o {
+        font-size: rem-calc(26);
+        margin-right: rem-calc(5);
+
+        @include breakpoint(small only) {
+          font-size: rem-calc(18);
+        }
+      }
+      p {
+        font-weight: $global-weight-bold;
+        margin-bottom: 0;
+        font-size: rem-calc(17);
+
+        @include breakpoint(medium down) {
+          font-size: rem-calc(14);
+        }
+      }
+      a {
+        text-decoration: underline;
+        padding: 0;
+      }
+    }
+
+    @include breakpoint(small only) {
+      .vertical-divider {
+        display: none;
+      }
+    }
+
+    .locale {
+      .dropdown.menu>li.is-dropdown-submenu-parent>a {
+        color: $black;
+        font-weight: $global-weight-bold;
+        font-size: rem-calc(17);
+
+        @include breakpoint(medium down) {
+          font-size: rem-calc(14);
+        }
+
+        &:after {
+          right: rem-calc(2);
+          border: inset rem-calc(4);
+          border-color: $black transparent transparent;
+        }
+      }
+    }
+  }
+}

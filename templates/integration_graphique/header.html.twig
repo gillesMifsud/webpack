@@ -1,0 +1,21 @@
+{#HEADER BAR#}
+<header class="header" data-sticky-container>
+    <div class="top-bar sticky" data-sticky data-margin-top="0" data-sticky-on="small">
+        <div class="top-bar-left">
+            <span class="zmdi zmdi-menu" data-open="bigMenu"></span>
+            <img src="{{ asset('/build/images/logo.png') }}" alt="Logo" class="logo"/>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li class="user">
+                    <p><i class="zmdi zmdi-account-o"></i><span>John Doe</span></p>
+                    <a href="#">Logout</a>
+                </li>
+                <li class="vertical-divider"></li>
+                <li class="locale">
+                    {{ sonata_block_render({ 'type': 'App\\Block\\SwitchLocaleBlockService' }, {'shrinkSize': true}) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

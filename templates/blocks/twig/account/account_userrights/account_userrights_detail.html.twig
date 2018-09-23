@@ -1,0 +1,110 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+<div class="account_userrights_detail">
+    <form action="">
+
+        <div class="top">
+            <p class="h2">Demande de modification de mes informations</p>
+            <h2>Rossignol</h2>
+
+            <ul>
+                <li>
+                    <span class="h2">Export</span>
+                    <input type="checkbox" id="export" name="set-name" data-niceSwitch>
+                    <label for="export"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                </li>
+                <li>
+                    <span class="h2">Virtual Store</span>
+                    <input type="checkbox" id="virtual_store" name="set-name" data-niceSwitch>
+                    <label for="virtual_store"><span class="toggle--on">Oui</span><span
+                            class="toggle--off">Non</span></label>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <div class="row">
+            {#Foreach...#}
+            <div class="column small-12 large-11">
+                <div class="row">
+                    <div class="column small-6 large-2">
+                        <p class="h2">HARDGOOD</p>
+                        <div>
+                            <p class="h3 text-uppercase">Toutes</p>
+                            <input type="checkbox" id="Alpine_all" name="set-name" data-niceSwitch>
+                            <label for="Alpine_all"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                        <hr>
+                        <div>
+                            <p class="h3">Snowboard</p>
+                            <input type="checkbox" id="Snowboard" name="set-name" data-niceSwitch>
+                            <label for="Snowboard"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                        <div>
+                            <p class="h3">Nordic</p>
+                            <input type="checkbox" id="Nordic" name="set-name" data-niceSwitch>
+                            <label for="Nordic"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                        <div>
+                            <p class="h3">Tech Equipement</p>
+                            <input type="checkbox" id="tech_equipement" name="set-name" data-niceSwitch>
+                            <label for="tech_equipement"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                        <div>
+                            <p class="h3">Bike</p>
+                            <input type="checkbox" id="Bike" name="set-name" data-niceSwitch>
+                            <label for="Bike"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                    </div>
+                    {#DELETE#}
+                    <div class="column small-6 large-2">
+                        <p class="h2">HARDGOOD</p>
+                        <div>
+                            <p class="h3 text-uppercase">Toutes</p>
+                            <input type="checkbox" id="Alpine" name="set-name" data-niceSwitch>
+                            <label for="Alpine"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                        <hr>
+                        <div>
+                            <p class="h3">Snowboard</p>
+                            <input type="checkbox" id="Snowboard" name="set-name" data-niceSwitch>
+                            <label for="Snowboard"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                        <div>
+                            <p class="h3">Nordic</p>
+                            <input type="checkbox" id="Nordic" name="set-name" data-niceSwitch>
+                            <label for="Nordic"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                        <div>
+                            <p class="h3">Tech Equipement</p>
+                            <input type="checkbox" id="tech_equipement" name="set-name" data-niceSwitch>
+                            <label for="tech_equipement"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                    </div>
+
+                    <div class="column small-6 large-2">
+                        <p class="h2">HARDGOOD</p>
+                        <div>
+                            <p class="h3 text-uppercase">Toutes</p>
+                            <input type="checkbox" id="Alpine" name="set-name" data-niceSwitch>
+                            <label for="Alpine"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                        <hr>
+                        <div>
+                            <p class="h3">Snowboard</p>
+                            <input type="checkbox" id="Snowboard" name="set-name" data-niceSwitch>
+                            <label for="Snowboard"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                        </div>
+                    </div>
+                    {#END DELETE#}
+                </div>
+            </div>
+            {#Actions buttons#}
+            <div class="column small-12 large-1">
+                <button class="button tertiaire secondary">Annuler</button>
+                <button type="submit" class="button tertiaire primary">Valider</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

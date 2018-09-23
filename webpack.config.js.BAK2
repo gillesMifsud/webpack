@@ -1,0 +1,38 @@
+const path = require('path');
+const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const dev = process.env.NODE_ENV === "dev"; // If true we are dev env
+
+let config = {
+    entry: './assets/js/app.js',
+    watch: dev,
+    output: {
+        path: path.resolve(__dirname, './public/build'),
+        filename: 'bundle.js'
+    },
+    module: {
+        // configuration regarding modules
+        rules: [
+            // rules for modules (configure loaders, parser options, etc.)
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            }
+        ]
+    }
+};
+
+if (!dev) {
+    config.optimisation.minimizer.push(
+        new uglifyJsPlugin({
+            sourceMap: true,
+            include: [
+                path.resolve(__dirname, 'node_modules/foundation-sites/js'),
+                path.resolve(__dirname, 'assets')
+            ],
+            exclude: [/node_modules\/(?!(foundation-sites)\/).*/, /node_modules/],
+        })
+    )
+
+}

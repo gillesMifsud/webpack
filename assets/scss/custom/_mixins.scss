@@ -1,0 +1,603 @@
+@mixin materialInput() {
+  [data-materialInput] {
+
+    $fontSize: rem-calc(12);
+
+    position: relative;
+
+    input,
+    textarea,
+    select {
+      display: block;
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid $light-gray !important;
+
+      -webkit-appearance: none;
+      outline: none !important;
+      box-shadow: none !important;
+      //resize: none;
+    }
+
+    textarea {
+      min-height: auto;
+    }
+
+    // Autofill styles
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      border: none !important;
+      border-bottom: 1px solid $light-gray !important;
+      -webkit-text-fill-color: $medium-gray !important;
+      -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset !important;
+      transition: background-color 5000s ease-in-out 0s !important;
+      background-color: rgba(255, 255, 255, 0) !important;
+    }
+
+    input:-webkit-autofill ~ label,
+    input:-webkit-autofill:hover ~ label,
+    input:-webkit-autofill:focus ~ label,
+    textarea:-webkit-autofill ~ label,
+    textarea:-webkit-autofill:hover ~ label,
+    textarea:-webkit-autofill:focus ~ label,
+    select:-webkit-autofill ~ label,
+    select:-webkit-autofill:hover ~ label,
+    select:-webkit-autofill:focus ~ label {
+      top: -10px;
+      font-size: $fontSize;
+    }
+
+    input[data-invalid] ~ label ,
+    textarea[data-invalid] ~ label ,
+    select[data-invalid] ~ label {
+      font-size: $fontSize;
+      color: get-color(alert);
+      font-weight: $global-weight-bold;
+    }
+
+    input[data-invalid] ~ label ,
+    textarea[data-invalid] ~ label {
+      top: -10px;
+    }
+
+    select[data-invalid] ~ label {
+      top: 5px !important;
+    }
+
+    select[data-invalid] {
+      border-bottom: 1px solid get-color(alert) !important;
+    }
+
+    input[required] ~ label ,
+    textarea[required] ~ label ,
+    select[required] ~ label {
+      &:after {
+        content: '*';
+        padding-left: rem-calc(3);
+      }
+    }
+
+    // Placeholder
+    input::placeholder,
+    textarea::placeholder {
+      color: transparent;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-bottom: 1px solid $light-gray !important;
+      background-color: transparent;
+    }
+
+    label {
+      top: 5px;
+
+      text-transform: uppercase;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all;
+    }
+
+    input:focus ~ label,
+    input:not(:placeholder-shown) ~ label {
+      top: -10px;
+      font-size: $fontSize;
+    }
+
+    textarea:focus ~ label,
+    textarea:not(:placeholder-shown) ~ label {
+      top: -17px;
+      font-size: $fontSize;
+    }
+
+    select:focus ~ label,
+    select:not([value=""]):valid ~ label {
+      top: -10px !important;
+      //font-size: $fontSize !important;
+    }
+
+    input[type="date"] {
+      & + label {
+        top: -10px !important;
+        font-size: $fontSize !important;
+      }
+      @include breakpoint(medium down) {
+        margin-top: $global-margin/2;
+      }
+    }
+
+    *, *:before, *:after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    // Password visibility toogler
+    .unmask {
+      position: absolute;
+      top: 10px;
+      right: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    /* IE11 */
+    @media all and (-ms-high-contrast:none)
+    {
+      *::-ms-backdrop, label { top: -10px; font-size: $fontSize;}
+      *::-ms-backdrop, .unmask { display: none;}
+    }
+    /* Microsoft Edge Browser 12+ (All) - @supports method */
+    @supports (-ms-ime-align:auto) {
+      label { top: -10px; font-size: $fontSize;}
+      input::placeholder, textarea::placeholder {
+        color: #cacaca;
+      }
+      .unmask { display: none;}
+    }
+  }
+}
+
+// mixin
+@mixin vh() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// custom checkbox/radios
+
+@mixin niceCheckBoxesNdRadios(
+  $inputHeight: 13px,
+  $inputWidth: 13px,
+  $inputBorderWidth: 2px,
+  $inputActiveScale: 4px, // optimized for even numbers
+
+  $checkboxColor: #4F8196,
+  $checkboxDisabledColor: #cccccc,
+
+  $toggleInputWidth: 35px,
+  $toggleInputHeight: 20px,
+  $toggleBGColor: #d6d6d6,
+  $toggleBGColorDisabled: lighten($toggleBGColor, 5%),
+  $toggleBGColorActive: $checkboxColor,
+  $toggleBGColorActiveDisabled: lighten(desaturate($toggleBGColorActive, 50%), 15%),
+  $toggleHandleColor: #ffffff,
+  $toggleHandleColorActive: #ffffff
+) {
+  [data-niceRadio],
+  [data-niceCheckbox] {
+    @include vh();
+
+    &:focus,
+    &:hover {
+      + label {
+        &:before {
+          border-color: $checkboxColor;
+          background-color: lighten($checkboxDisabledColor, 15%);
+        }
+      }
+    }
+
+    &:active {
+      + label {
+        &:before {
+          transition-duration: 0s;
+        }
+      }
+
+    }
+
+    + label {
+      position: relative;
+      padding: 5px 5px 5px 1.5em;
+      vertical-align: middle;
+      user-select: none;
+      cursor: pointer;
+      text-transform: uppercase;
+
+      &:before {
+        box-sizing: content-box;
+        content: '';
+        color: $checkboxColor;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: $inputWidth;
+        height: $inputHeight;
+        margin-top: -($inputHeight/2 + $inputBorderWidth);
+        border: $inputBorderWidth solid $checkboxColor;
+        //font-size: 18px;
+        text-align: center;
+        transition: all 0.4s ease;
+      }
+      &:after {
+        box-sizing: content-box;
+        content: '';
+        background-color: $checkboxColor;
+        position: absolute;
+        top: 50%;
+        left: $inputBorderWidth + $inputActiveScale/2;
+        width: $inputWidth - $inputActiveScale;
+        height: $inputHeight - $inputActiveScale;
+        margin-top: -(($inputHeight - $inputActiveScale)/2);
+        transform: scale(0);
+        transform-origin: 50%;
+        transition: transform 200ms ease-out;
+      }
+    }
+
+    &:disabled {
+
+      + label {
+        &:before {
+          border-color: $checkboxDisabledColor;
+        }
+      }
+
+      &:focus,
+      &:hover {
+        + label {
+          &:before {
+            background-color: inherit;
+          }
+        }
+      }
+
+      &:checked {
+        + label {
+          &:before {
+            background-color: $checkboxDisabledColor;
+          }
+        }
+      }
+    }
+  }
+
+  [data-niceCheckbox] {
+    + label {
+      &:after {
+        background-color: transparent;
+        top: 50%;
+        left: 4px;
+        width: 8px;
+        height: 3px;
+        margin-top: -4px;
+        border-style: solid;
+        border-color: #ffffff;
+        border-width: 0 0 3px 3px;
+        border-image: none;
+        transform: rotate(-45deg) scale(0);
+      }
+    }
+    &:checked {
+
+      + label {
+        &:after {
+          content: ''; //\2713';
+          transform: rotate(-45deg) scale(1);
+          transition: transform 200ms ease-out;
+        }
+      }
+
+    }
+  }
+
+  [data-niceRadio] {
+    &:checked {
+      + label {
+        &:before {
+          animation: borderscale 300ms ease-in;
+          background-color: white;
+        }
+        &:after {
+          transform: scale(1);
+        }
+      }
+    }
+    + label {
+      &:before,
+      &:after {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  [data-niceCheckbox] {
+    &:checked {
+      + label {
+        &:before {
+          animation: borderscale 200ms ease-in;
+          background: $checkboxColor;
+        }
+        &:after {
+          transform: rotate(-45deg) scale(1);
+        }
+      }
+    }
+  }
+
+  @keyframes borderscale {
+    50% {
+      box-shadow: 0 0 0 2px $checkboxColor;
+    }
+  }
+}
+
+@mixin niceSwitchToggles($onColor: deeppink, $offColor: #cacaca){
+  [data-niceSwitch] {
+    display: none;
+    &:checked + label:before {
+      background-color: lighten($onColor, 35%);
+    }
+    &:checked + label:after {
+      background-color: $onColor;
+      -ms-transform: translate(80%, -50%);
+      -webkit-transform: translate(80%, -50%);
+      transform: translate(80%, -50%);
+    }
+    &:checked + label .toggle--on {
+      display: inline-block;
+      color: $primary-color;
+    }
+    &:checked + label .toggle--off {
+      display: inline-block;
+      // Use if you want to show/hide on/off
+      //display: none;
+    }
+
+    & + label .toggle--off,
+    & + label .toggle--on {
+      position: absolute;
+      top: 6px;
+    }
+
+    & + label .toggle--off {
+      left: -30px;
+    }
+
+    & + label .toggle--on {
+      right: -30px;
+    }
+  }
+  [data-niceSwitch] + label {
+    position: relative;
+    display: inline-block;
+    margin: 0 30px $global-margin 30px; // Compensate right & left position absolute on/off
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 16px;
+  }
+  [data-niceSwitch] + label:before, label:after {
+    content: "";
+    position: absolute;
+    margin: 0;
+    outline: 0;
+    top: 50%;
+    -ms-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  [data-niceSwitch] + label:before {
+    left: 1px;
+    width: 34px;
+    height: 14px;
+    background-color: $offColor;
+    border-radius: 8px;
+  }
+  [data-niceSwitch] + label:after {
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #FAFAFA;
+    border-radius: 50%;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+  }
+  [data-niceSwitch] + label .toggle--on {
+    display: inline-block;
+    // Use if you want to show/hide on/off
+    //display: none;
+  }
+  [data-niceSwitch] + label .toggle--off {
+    display: inline-block;
+  }
+}
+
+// Nice input type="file"
+@mixin niceInputFile() {
+  [data-niceInputFile] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $light-gray;
+    padding: rem-calc(5) 0;
+
+    margin: 0 0 $form-spacing;
+
+    .is-label {
+      text-transform: uppercase;
+      font-weight: normal;
+      pointer-events: none;
+
+      flex-grow: 1;
+      order: 1;
+
+      &.required {
+        &:after {
+          content: '*';
+        }
+      }
+    }
+
+    label {
+      flex-grow: 1;
+      order: 3;
+      @include button-hollow-style(
+              $color: $black,
+              $hover-lightness: $button-hollow-hover-lightness,
+              $border-width: $button-hollow-border-width
+      );
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .file-name {
+      flex-grow: 1;
+      order: 2;
+    }
+  }
+}
+// Responsive tables
+@mixin tableResponsive() {
+  @include breakpoint(medium down) {
+    .table-responsive table,
+    .table-responsive thead,
+    .table-responsive tbody,
+    .table-responsive tr,
+    .table-responsive th,
+    .table-responsive td {
+      display: block;
+    }
+
+    .table-responsive thead {
+      display: none;
+    }
+
+    .table-responsive td {
+      padding-left: 150px;
+      position: relative;
+      margin-top: 2px;
+      background: #FFF;
+    }
+
+    .table-responsive td:nth-child(odd) {
+      background-color: #f6f6f6;
+    }
+
+    .table-responsive td::before {
+      padding: rem-calc(5);
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 130px;
+      bottom: 0;
+      background-color: $primary-color;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .table-responsive tr {
+      margin-bottom: 1rem;
+    }
+
+    .table-responsive th + td {
+      padding-left: 10px;
+    }
+  }
+  .table-responsive tbody tr td ul {
+    list-style-type: none;
+    margin: 0;
+  }
+}
+
+// Nice lists
+[data-niceList] {
+  list-style-type: none;
+  padding: $global-padding;
+  margin: 0;
+
+  li {
+    position: relative;
+
+    a {
+      text-transform: uppercase;
+      border-bottom: 1px solid $light-gray;
+      color: $black;
+      font-weight: $global-weight-bold;
+      font-size: rem-calc(14);
+      display: block;
+      text-decoration: none;
+      padding: $global-padding 0;
+      transition:.4s;
+
+      &:after {
+        font-size: rem-calc(25);
+        color: $black;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%) rotate(45deg);
+
+        border-style: solid;
+        border-width: 0.2em 0.2em 0 0;
+        content: '';
+        display: inline-block;
+
+        $size: rem-calc(13);
+        height: $size;
+        width: $size;
+
+        vertical-align: top;
+        transition:.4s;
+      }
+
+      &:hover {
+        color: $primary-color;
+        &:after {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+

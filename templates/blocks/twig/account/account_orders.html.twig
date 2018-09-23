@@ -1,0 +1,158 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+
+    <div class="account_orders">
+        <div class="row">
+            <div class="column small-12 large-9">
+                <div class="row">
+                    {#Division#}
+                    <div class="column small-12 medium-4">
+                        <div data-materialInput>
+                            <select name="division" id="division">
+                                <option value="">--- Choisir ---</option>
+                                <option value="division-1">Division-1</option>
+                                <option value="division-2">Division-2</option>
+                                <option value="division-3">Division-3</option>
+                            </select>
+                            <label for="division">Division</label>
+                        </div>
+                    </div>
+                    {#Ligne produit#}
+                    <div class="column small-12 medium-4">
+                        <div data-materialInput>
+                            <select name="product_line" id="product_line">
+                                <option value="">--- Choisir ---</option>
+                                <option value="product_line-1">Ligne_produit-1</option>
+                                <option value="product_line-2">Ligne_produit-2</option>
+                                <option value="product_line-3">Ligne_produit-3</option>
+                            </select>
+                            <label for="product_line">Ligne produit</label>
+                        </div>
+                    </div>
+                    {#Commande avant le#}
+                    <div class="column small-12 medium-4">
+                        <div data-materialInput>
+                            <input type="date" id="order_date_start" name="order_date_start"
+                                   value="" min="" max="" />
+                            <label for="order_date_start">Date de commande avant</label>
+                        </div>
+                    </div>
+                    {#Business unit#}
+                    <div class="column small-12 medium-4">
+                        <div data-materialInput>
+                            <select name="business_unit" id="business_unit">
+                                <option value="">--- Choisir ---</option>
+                                <option value="business_unit-1">Business_unit-1</option>
+                                <option value="business_unit-2">Business_unit-2</option>
+                                <option value="business_unit-3">Business_unit-3</option>
+                            </select>
+                            <label for="business_unit">Business unit</label>
+                        </div>
+                    </div>
+                    {#N° de commande#}
+                    <div class="column small-12 medium-4">
+                        <div data-materialInput>
+                            <input type="text" placeholder="N° de commande" name="order_number">
+                            <label>N° de commande</label>
+                        </div>
+                    </div>
+                    {#Date commande apres#}
+                    <div class="column small-12 medium-4">
+                        <div data-materialInput>
+                            <input type="date" id="order_date_end" name="order_date_end"
+                                   value="" min="" max="" />
+                            <label for="order_date_end">Date de commande après</label>
+                        </div>
+                    </div>
+                    {#N° de client#}
+                    <div class="column small-12 medium-4">
+                        <div data-materialInput>
+                            <input type="text" placeholder="N° de client" name="customer_number">
+                            <label>N° de client</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#Button export#}
+            <div class="column small-12 large-3">
+                <p class="text-right">
+                    <button class="button tertiaire medium-down-expanded">Export cdes (csv)</button>
+                </p>
+            </div>
+            {#Resultats (tableau)#}
+            <div class="column small-12">
+                <table class="table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Cde initiale</th>
+                            <th>N° cde b2b</th>
+                            <th>N° cde</th>
+                            <th>Client</th>
+                            <th>Date cde / date d'éxpédition</th>
+                            <th>Saison</th>
+                            <th>Origine</th>
+                            <th>Status</th>
+                            <th>Total net</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><a href="#"><i class="zmdi zmdi-collection-pdf zmdi-hc-2x"></i></a></td>
+                            <td>B2B1800025738</td>
+                            <td>3</td>
+                            <td>B2B1800025738</td>
+                            <td>
+                                03/05/2018
+                                15/10/2018
+                            </td>
+                            <td>1819</td>
+                            <td>B2BREPS</td>
+                            <td>OD</td>
+                            <td>158,00 €</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#"><i class="zmdi zmdi-collection-pdf zmdi-hc-2x"></i></a></td>
+                            <td>B2B1800025738</td>
+                            <td>3</td>
+                            <td>B2B1800025738</td>
+                            <td>
+                                03/05/2018
+                                15/10/2018
+                            </td>
+                            <td>1819</td>
+                            <td>B2BREPS</td>
+                            <td>OD</td>
+                            <td>158,00 €</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#"><i class="zmdi zmdi-collection-pdf zmdi-hc-2x"></i></a></td>
+                            <td>B2B1800025738</td>
+                            <td>3</td>
+                            <td>B2B1800025738</td>
+                            <td>
+                                03/05/2018
+                                15/10/2018
+                            </td>
+                            <td>1819</td>
+                            <td>B2BREPS</td>
+                            <td>OD</td>
+                            <td>158,00 €</td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                    <tr>
+                        <td colspan="9">
+                            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+                        </td>
+                    </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

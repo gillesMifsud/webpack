@@ -1,0 +1,6 @@
+{% if object.isReportGenerated %}
+    <a href="{{ path('app_import_download_report', { 'id': object.id }) }}" class="btn btn-sm btn-default view_link"
+       title="Download import report">
+        <i class="fa fa-list"></i> Report
+    </a>
+{% endif %}

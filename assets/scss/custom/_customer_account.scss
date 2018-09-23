@@ -1,0 +1,97 @@
+// templates/blocks/twig/account.html.twig
+.customer-account {
+  #customer-account-tabs {
+    &.tabs {
+      justify-content: center;
+      display: flex;
+      background: $headerGray;
+
+      .tabs-title {
+        text-align: center;
+        flex-grow: 1;
+
+        > a {
+          display: flex;
+          align-items: stretch;
+        }
+      }
+    }
+  }
+
+  // Tab content " mes commandes"
+  #account_orders {
+    .row > .column {
+      @include breakpoint(large) {
+        margin-top: $global-margin*2;
+      }
+    }
+    .button.tertiaire {
+      @include breakpoint(medium down) {
+        margin-bottom: $global-margin;
+      }
+    }
+  }
+
+  // Tab content "Mes adresses"
+  #account_addresses {
+
+    @include breakpoint(large) {
+
+      .row.align-center > .column {
+        margin-top: $global-margin*2;
+      }
+    }
+
+    h2 {
+      margin-bottom: $global-margin*2;
+    }
+
+    legend h2 {
+      margin-bottom: 0;
+    }
+  }
+
+  // Tab content "Droits utilisateur"
+  #account_userrights {
+
+    table {
+      a {
+        color: $primary-color;
+        text-decoration: none;
+      }
+    }
+  }
+
+  // Tab content "Mes paniers sauvegardés"
+  // Tab content "Mes paniers proposés"
+  #account_savedcarts_propositions-label {
+    span {
+      display: block;
+    }
+  }
+  #account_savedcarts_propositions {
+    table tbody tr td a {
+      display: block;
+      text-decoration: none;
+
+      span {
+        vert-align: bottom;
+      }
+    }
+  }
+
+  .tabs-content .tabs-panel,
+  .accordion-content {
+    padding: rem-calc(20) 0 0 0;
+
+    @include breakpoint(medium) {
+      padding: rem-calc(40) 0 0 0;
+    }
+  }
+
+  .account_dashboard {
+    h2 {
+      padding: $global-padding 0;
+    }
+  }
+}

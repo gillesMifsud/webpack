@@ -1,0 +1,27 @@
+{% block sonata_page_html_tag %}
+<!doctype html>
+<html class="no-js" lang="{{ app.request.locale }}" {{ sonata_seo_html_attributes() }}>
+{% endblock %}
+	{% block sonata_page_head %}
+  	<head {{ sonata_seo_head_attributes() }}>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{ sonata_seo_title() }}
+        {{ sonata_seo_metadatas() }}
+        {% include 'layouts/inc/page_css.html.twig' %}
+		<link rel="stylesheet" href="https://use.typekit.net/lxv4gcx.css">
+		<link rel="stylesheet" href="/build/css/material-design-iconic-font.min.css">
+	</head>
+    {% endblock %}
+    {% block sonata_page_body_tag %}
+	<body class="{% block sonata_page_body_class %}{% endblock %}">
+    {% endblock %}
+    {% include 'layouts/inc/page_toolbar.html.twig' %}
+    	{% block sonata_page_container %}
+    		{# EMPTY, to be overriden by the layouts extending base_layout #}
+    	{% endblock %}
+        {% include 'layouts/inc/page_js.html.twig' %}
+        {% include 'layouts/inc/page_additionnal_assets.html.twig' %}
+	</body>
+</html>

@@ -1,0 +1,393 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <style>
+        .tabs {
+            justify-content: center;
+            display: flex;
+        }
+
+        .tabs-title {
+            text-align: center;
+            flex-grow: 1;
+        }
+    </style>
+    <div class="html_elements">
+        <ul class="tabs" data-responsive-accordion-tabs="accordion medium-accordion large-tabs"
+            data-allow-all-closed="true" id="html-tabs">
+            {#Buttons#}
+            <li class="tabs-title"><a href="#buttons">Boutons</a></li>
+            {#Text / Icons#}
+            <li class="tabs-title"><a href="#texticons">Textes / Icones</a></li>
+            {#Forms#}
+            <li class="tabs-title is-active"><a href="#forms" aria-selected="true">Formulaires</a></li>
+            {#Tabs#}
+            <li class="tabs-title"><a href="#tabs">Tabs</a></li>
+            {#Modal#}
+            <li class="tabs-title"><a href="#modalcallouts">Modal & Callouts</a></li>
+            {#List special#}
+            <li class="tabs-title"><a href="#listspe">Listes a chevrons</a></li>
+            {#Tables#}
+            <li class="tabs-title"><a href="#tables">Tables</a></li>
+        </ul>
+        <div class="tabs-content" data-tabs-content="html-tabs">
+            {#Buttons#}
+            <div class="tabs-panel" id="buttons">
+                <div class="row">
+                    <div class="columns small-12">
+                        <fieldset class="fieldset">
+                            <legend>Buttons</legend>
+                            <div class="row">
+                                <div class="columns small-12 large-4">
+                                    <button class="button">Bouton primaire</button>
+                                    <button class="button expanded">Bouton primaire class expanded</button>
+                                </div>
+                                <div class="columns small-12 large-4"><button class="button secondary">Bouton secondaire</button></div>
+                                <div class="columns small-12 large-4"><button class="button important">Bouton important</button></div>
+                                <div class="columns small-12 large-4">
+                                    <button class="button tertiaire">Bouton tertiaire</button>
+                                    <button class="button tertiaire alternatif">Bouton tertiaire</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            {#Text / Icons#}
+            <div class="tabs-panel" id="texticons">
+                <div class="row">
+                    <div class="columns small-12 large-6">
+                        <fieldset class="fieldset">
+                            <legend>Heading and font size</legend>
+                            <h1>This is a h1 title</h1>
+                            <h2>This is a h2 title</h2>
+                            <h3>This is a h3 title</h3>
+                            <p><a href="">This is a link</a></p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dolore eaque eos et eum ex illum incidunt iste magni,
+                                neque nihil pariatur quia quisquam rem repudiandae veritatis vero! Nulla, vero.</p>
+                        </fieldset>
+                    </div>
+                    <div class="columns small-12 large-6">
+                        <fieldset class="fieldset">
+                            <legend>Icon Fonts</legend>
+                            <p><i class="zmdi zmdi-flower-alt zmdi-hc-5x"></i> zmdi-hc-5x</p>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            {#Forms#}
+            <div class="tabs-panel is-active" id="forms">
+                <form style="width: 100%;" data-abide novalidate>
+                    <div class="row">
+                        <div class="columns small-12">
+                            <fieldset class="fieldset">
+                                <legend>Forms inputs</legend>
+                                <div class="row">
+                                    <div class="small-12 large-4 columns">
+                                        <div data-materialInput>
+                                            <input type="text" placeholder=" ">
+                                            <label>Text</label>
+                                        </div>
+                                    </div>
+                                    <div class="small-12 large-4 columns">
+                                        <div data-materialInput>
+                                            <input type="text" placeholder="small-12.columns"
+                                                   aria-errormessage="error" required pattern="alpha">
+                                            <label>Text REQUIRED</label>
+                                            <span class="form-error" id="error">Champ requis ou invalide</span>
+                                        </div>
+                                    </div>
+                                    <div class="small-12 large-3 columns">
+                                        <div data-materialInput>
+                                            <textarea placeholder="small-12.columns"></textarea>
+                                            <label>Textarea Label</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="columns small-12 large-4">
+                            <fieldset class="fieldset">
+                                <legend>Forms selects</legend>
+                                <div class="row">
+                                    <div class="small-12 columns">
+                                        <label>Select Box</label>
+                                        <select>
+                                            <option value="husker">Husker</option>
+                                            <option value="starbuck">Starbuck</option>
+                                            <option value="hotdog">Hot Dog</option>
+                                            <option value="apollo">Apollo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="columns small-12 large-4">
+                            <fieldset class="fieldset">
+                                <legend>Forms selects REQUIRED</legend>
+                                <div class="row">
+                                    <div class="small-12 columns">
+                                        <div data-materialInput>
+                                            <select name="" id="pays" required aria-errormessage="error-pays">
+                                                <option value=""></option>
+                                                <option value="france">France</option>
+                                                <option value="deutschland">Deutschland</option>
+                                                <option value="england">England</option>
+                                            </select>
+                                            <label for="pays">Pays</label>
+                                            <span class="form-error" id="error-pays">Champ requis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="columns small-12">
+                            <fieldset class="fieldset">
+                                <legend>Forms selects triggers hidden content</legend>
+                                <div class="row">
+                                    <div class="small-12 large-6 columns">
+                                        <div data-materialInput>
+                                            <select name="" id="pays" required aria-errormessage="error-pays" data-select-toogler>
+                                                <option value=""></option>
+                                                <option value="france">France</option>
+                                                <option value="deutschland">Deutschland</option>
+                                                <option value="england">England</option>
+                                            </select>
+                                            <label for="pays">Pays</label>
+                                            <span class="form-error" id="error-pays">Champ requis</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="small-12 large-6 columns">
+                                        <div data-select-toogler-target>
+                                            <h2>Hidden content</h2>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem corporis magnam officia quae quo unde veritatis. A aspernatur culpa, dolore eligendi error fugiat iure molestiae placeat praesentium sed vel!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="small-12 large-4 columns">
+                            <fieldset class="fieldset">
+                                <legend>Radios</legend>
+                                <input type="radio" name="pokemon" value="Red" id="pokemonRed" data-niceRadio required><label for="pokemonRed">Red</label>
+                                <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" data-niceRadio><label for="pokemonBlue">Blue</label>
+                                <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow" data-niceRadio><label for="pokemonYellow">Yellow</label>
+                            </fieldset>
+                        </div>
+                        <div class="small-12 large-4 columns">
+                            <fieldset class="fieldset">
+                                <legend>Checkboxes</legend>
+                                <input id="checkbox1" type="checkbox" data-niceCheckbox><label for="checkbox1">Checkbox 1</label>
+                                <input id="checkbox2" type="checkbox" data-niceCheckbox><label for="checkbox2">Checkbox 2</label>
+                                <input id="checkbox3" type="checkbox" data-niceCheckbox><label for="checkbox3">Checkbox 3</label>
+                            </fieldset>
+                        </div>
+                        <div class="small-12 large-4 columns">
+                            <fieldset class="fieldset">
+                                <legend>TOGGLES</legend>
+                                <div>
+                                    <p class="h3">Some text</p>
+                                    <input type="checkbox" id="toogle_1" name="set-name" data-niceSwitch>
+                                    <label for="toogle_1"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                                </div>
+                                <div>
+                                    <p class="h3">Some text 2</p>
+                                    <input type="checkbox" id="toogle_2" name="set-name" data-niceSwitch>
+                                    <label for="toogle_2"><span class="toggle--on">Oui</span><span class="toggle--off">Non</span></label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {#Tabs#}
+            <div class="tabs-panel" id="tabs">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h1>TABS</h1>
+                        <ul class="tabs" data-tabs id="example-tabs">
+                            <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Descriptions</a></li>
+                            <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Technologies</a></li>
+                        </ul>
+                        <div class="tabs-content" data-tabs-content="example-tabs">
+                            <div class="tabs-panel is-active" id="panel1">
+                                <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+                            </div>
+                            <div class="tabs-panel" id="panel2">
+                                <p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#Modal & callouts#}
+            <div class="tabs-panel" id="modalcallouts">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h1>MODAL</h1>
+                        <p><button class="button" data-open="exampleModal1">Click me for a modal</button></p>
+
+                        <div class="reveal" id="exampleModal1" data-reveal>
+                            <div class="row collapse">
+                                <div class="columns">
+                                    <p class="lead">Titre</p>
+                                    <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cumque debitis dignissimos dolor exercitationem fuga id in iste, laborum libero neque, possimus provident quasi quidem ratione reiciendis repudiandae tenetur voluptates.</p>
+                                </div>
+                            </div>
+                            <div class="row align-justify collapse">
+                                <div class="large-5 small-12 columns">
+                                    <button class="button secondary expanded">Annuler</button>
+                                </div>
+                                <div class="large-5 small-12 columns">
+                                    <button class="button expanded">Valider</button>
+                                </div>
+                            </div>
+
+                            <button class="close-button" data-close aria-label="Close modal" type="button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {#Callouts#}
+                <div class="row">
+                    <div class="columns small-12"><h1>Callouts</h1></div>
+                    <div class="large-4 small-12 columns">
+                        <div class="callout success">
+                            <span>It has an easy to override visual style.</span>
+                        </div>
+                    </div>
+                    <div class="large-4 small-12 columns">
+                        <div class="callout warning" data-closable>
+                            <span>It has an easy to override visual style.</span>
+                            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="large-4 small-12 columns">
+                        <div class="callout alert" data-closable>
+                            <span>It has an easy to override visual style.</span>
+                            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#List special#}
+            <div class="tabs-panel" id="listspe">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <fieldset class="fieldset">
+                            <legend>Listes à chevrons</legend>
+                            <ul data-niceList>
+                                <li><a href="/fr/html-elements">HTML Elements</a></li>
+                                <li><a href="/fr/log-in">Connexion</a></li>
+                                <li><a href="/fr/register">Enregisterment</a></li>
+                                <li><a href="/fr/customer-account">Mon compte</a></li>
+                                <li><a href="/fr/user-rights-detail">Droits utilisateur (page de détail)</a></li>
+                                <li><a href="/fr/choice-universe">Choix univers</a></li>
+                                <li><a href="/fr/choice-universe-detail">Choix univers (page de détail)</a></li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            {#Tables#}
+            <div class="tabs-panel" id="tables">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <fieldset class="fieldset">
+                            <legend>TABLES</legend>
+                            <table class="table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>head1</th>
+                                    <th>head2</th>
+                                    <th>head3</th>
+                                    <th>head4</th>
+                                    <th>head5</th>
+                                    <th>head6</th>
+                                    <th>head7</th>
+                                    <th>head8</th>
+                                    <th>head9</th>
+                                    <th>head10</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>cell1_1</td>
+                                    <td>cell2_1</td>
+                                    <td>cell3_1</td>
+                                    <td>cell4_1</td>
+                                    <td>cell5_1</td>
+                                    <td>cell6_1</td>
+                                    <td>cell7_1</td>
+                                    <td>cell8_1</td>
+                                    <td>cell9_1</td>
+                                    <td>cell10_1</td>
+                                </tr>
+                                <tr>
+                                    <td>cell1_2</td>
+                                    <td>cell2_2</td>
+                                    <td>cell3_2</td>
+                                    <td>cell4_2</td>
+                                    <td>cell5_2</td>
+                                    <td>cell6_2</td>
+                                    <td>cell7_2</td>
+                                    <td>cell8_2</td>
+                                    <td>cell9_2</td>
+                                    <td>cell10_2</td>
+                                </tr>
+                                <tr>
+                                    <td>cell1_3</td>
+                                    <td>cell2_3</td>
+                                    <td>cell3_3</td>
+                                    <td>cell4_3</td>
+                                    <td>cell5_3</td>
+                                    <td>cell6_3</td>
+                                    <td>cell7_3</td>
+                                    <td>cell8_3</td>
+                                    <td>cell9_3</td>
+                                    <td>cell10_3</td>
+                                </tr>
+                                <tr>
+                                    <td>cell1_4</td>
+                                    <td>cell2_4</td>
+                                    <td>cell3_4</td>
+                                    <td>cell4_4</td>
+                                    <td>cell5_4</td>
+                                    <td>cell6_4</td>
+                                    <td>cell7_4</td>
+                                    <td>cell8_4</td>
+                                    <td>cell9_4</td>
+                                    <td>cell10_4</td>
+                                </tr>
+                                </tbody>
+
+                                <tfoot>
+                                <tr>
+                                    <td colspan="10">
+                                        <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+                                    </td>
+                                </tr>
+                                </tfoot>
+
+                            </table>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

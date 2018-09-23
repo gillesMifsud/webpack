@@ -1,0 +1,20 @@
+// Modified to be able to have always down footer
+// https://foundation.zurb.com/forum/posts/53901-foundation-6-sticky-footer-pushed-down-with-off-canvas-and-flexbox-css-tutorial
+
+.off-canvas-wrapper {
+  overflow: visible;
+}
+
+.off-canvas-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header, nav, footer {
+  flex-shrink: 0;
+}
+
+main {
+  flex: 1 0 auto; /* Use 1 0 auto instead of just 1 for backwards compatibility with other browsers */
+}

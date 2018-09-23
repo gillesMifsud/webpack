@@ -1,0 +1,59 @@
+$offcanvas-full-screen-bg: lighten($black, 20%);
+
+#bigMenu {
+  @include off-canvas-base($background: $offcanvas-full-screen-bg, $transition: 0.25s ease-in-out);
+  @include off-canvas-position($position: left, $sizes: 100%);
+
+  background-color: #f6f6f6;
+  box-sizing: border-box;
+  padding: 2*$global-padding;
+
+  button {
+    color: $black;
+    font-size: rem-calc(40);
+
+    &:hover {
+      cursor: pointer;
+      color: $medium-gray;
+    }
+  }
+
+  .section {
+    border-bottom: 2px solid $medium-gray;
+    margin: rem-calc(15) 0;
+  }
+
+  .menu {
+    //@include menu-base;
+    @include menu-direction(vertical);
+
+    ul {
+      list-style-type: none;
+      margin-left: 0;
+    }
+
+    a {
+      font-weight: $global-weight-bold;
+      padding: rem-calc(10) 0;
+      text-align: left;
+      color: $black;
+      text-transform: uppercase;
+      font-size: rem-calc(17);
+
+      &:hover {
+        color: $medium-gray;
+      }
+    }
+  }
+}
+
+
+
+/*@include breakpoint(large) {
+  text-align: right;
+  margin-bottom: 0;
+}
+@include breakpoint(large down) {
+  text-align: center;
+}*/
+
