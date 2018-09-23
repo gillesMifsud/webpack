@@ -29,19 +29,26 @@ let config = {
     },
 };
 
+module.exports = (env, argv) => {
 
-if (ENV === "production") {
-    config.optimization.minimizer.push(
-        new uglifyJsPlugin({
-            sourceMap: true,
-            test: /\.js(\?.*)?$/i,
-            include: [
-                path.resolve(__dirname, 'node_modules/foundation-sites'),
-                path.resolve(__dirname, 'assets')
-            ],
-            exclude: [/node_modules\/(?!(foundation-sites)\/).*/, /node_modules/],
-        })
-    )
-}
+    if (argv.mode === 'development') {
+        config.devtool = 'source-map';
+        config.watch = true
+    }
 
-module.exports = config;
+    if (argv.mode === 'production') {
+        config.optimization.minimizer.push(
+            new uglifyJsPlugin({
+                sourceMap: true,
+                test: /\.js(\?.*)?$/i,
+                include: [
+                    path.resolve(__dirname, 'node_modules/foundation-sites'),
+                    path.resolve(__dirname, 'assets')
+                ],
+                exclude: [/node_modules\/(?!(foundation-sites)\/).*/, /node_modules/],
+            })
+        )
+    }
+
+    return config;
+};
