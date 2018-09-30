@@ -1,11 +1,28 @@
 const path = require('path');
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ENV = process.env.NODE_ENV;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-// https://www.youtube.com/watch?v=g11Pty544zo&list=PLjwdMgw5TTLVzGXGxEBdjwHXCeYnBb7n8&index=5
-// 9min
+const ENV = process.env.NODE_ENV;
+const dev = process.env.NODE_ENV === "dev";
+
+let cssLoaders = [
+    { loader: 'css-loader', options: {importLoaders: 1} },
+    { loader: 'postcss-loader',
+        options: {
+            ident: 'postcss',
+            plugins: (loader) => [
+                require('postcss-import')({root: loader.resourcePath}),
+                require('postcss-preset-env')(),
+                require('autoprefixer')({
+                    browsers: ["last 4 versions", "ie > 10"]
+                })
+            ]
+        }
+    }
+];
 
 let config = {
+    watch: dev,
     mode: "development", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
     entry: './src/assets/js/app.js',
     output: {
@@ -30,30 +47,27 @@ let config = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: cssLoaders
             },
             {
-                test: /\.scss$/,
+                test: /\.(sa|sc|c)ss$/,
                 use: [
-                    'style-loader',
-                    { loader: 'css-loader', options: {importLoaders: 1} },
-                    { loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: (loader) => [
-                                require('postcss-import')({root: loader.resourcePath}),
-                                require('postcss-preset-env')(),
-                                require('autoprefixer')({
-                                    browsers: ["last 4 versions", "ie > 10"]
-                                })
-                            ]
-                        }
-                    },
-                    'sass-loader'
-                ]
+                    dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
             }
         ]
     },
+    plugins: [
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: dev ? '[name].css' : '[name].[hash].css',
+            chunkFilename: dev ? '[id].css' : '[id].[hash].css',
+        })
+    ],
     optimization: {
         minimizer: []
     },

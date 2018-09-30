@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --watch"
+    "dev": "NODE_ENV=dev webpack",
+    "prod": "NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,11 @@
     "@babel/preset-env": "^7.1.0",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.0",
+    "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
+    "postcss-import": "^12.0.0",
     "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.0.7",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^2.0.1",

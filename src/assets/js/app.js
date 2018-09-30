@@ -1,5 +1,7 @@
 import whatInput from 'what-input';
 
+import css from '../scss/app.scss';
+
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
