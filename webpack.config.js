@@ -7,10 +7,15 @@ const ENV = process.env.NODE_ENV;
 
 let config = {
     mode: "development", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
-    entry: './assets/js/app.js',
+    entry: './src/assets/js/app.js',
     output: {
-        path: path.resolve(__dirname, './public/build'),
-        filename: 'bundle.js'
+
+        // options related to how webpack emits results
+        path: path.resolve(__dirname, "public/assets"), // string
+        // the target directory for all output files
+        // must be an absolute path (use the Node.js path module)
+        filename: "bundle.js", // string    // the filename template for entry chunks
+        publicPath: "/assets/", // string    // the url to the output directory resolved relative to the HTML page
     },
     module: {
         // configuration regarding modules
@@ -20,7 +25,8 @@ let config = {
                 test: /\.js$/,
                 use: {
                     loader: 'babel-loader'
-                }
+                },
+                exclude: [/node_modules\/(?!(foundation-sites)\/).*/, /node_modules/],
             },
             {
                 test: /\.css$/,
@@ -69,11 +75,6 @@ module.exports = (env, argv) => {
             new uglifyJsPlugin({
                 sourceMap: true,
                 test: /\.js(\?.*)?$/i,
-                include: [
-                    path.resolve(__dirname, 'node_modules/foundation-sites'),
-                    path.resolve(__dirname, 'assets')
-                ],
-                exclude: [/node_modules\/(?!(foundation-sites)\/).*/, /node_modules/],
             })
         );
         config.performance.hints = false;
