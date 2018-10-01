@@ -1,10 +1,5 @@
-/*
 @charset 'utf-8';
 
-@import 'settings';
 @import 'foundation';
-@import 'motion-ui';
-// ---------- CUSTOM ----------- //*/
-body {
-  transform: translateX(50%);
-}
+@import 'settings';
+@import '~motion-ui/src/motion-ui';

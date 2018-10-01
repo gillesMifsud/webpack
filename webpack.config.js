@@ -55,7 +55,12 @@ let config = {
                     dev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
-                    'sass-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: [path.resolve(__dirname, 'node_modules')],
+                        },
+                    }
                 ],
             }
         ]
