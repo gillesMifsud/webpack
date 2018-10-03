@@ -1,6 +1,8 @@
 const path = require('path');
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ManifestPlugin = require('webpack-manifest-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const ENV = process.env.NODE_ENV;
 const dev = ENV === "dev";
@@ -26,15 +28,18 @@ let cssLoaders = [
 ];
 
 let config = {
-    watch: dev,
-    mode: "development", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
-    entry: './src/assets/js/app.js',
+    mode: "development",
+    entry: {
+      app: [
+          './src/assets/scss/app.scss',
+          './src/assets/js/app.js']
+    },
     output: {
         // options related to how webpack emits results
         path: path.resolve(__dirname, "public/assets"), // string
         // the target directory for all output files
         // must be an absolute path (use the Node.js path module)
-        filename: "bundle.js", // string    // the filename template for entry chunks
+        filename: dev ? '[name].js' : '[name].[hash].js', // string    // the filename template for entry chunks
         publicPath: "/assets/", // string    // the url to the output directory resolved relative to the HTML page
     },
     module: {
@@ -60,7 +65,7 @@ let config = {
                 test: /\.(sa|sc)ss$/,
                 use: [
                     // fallback to style-loader in development
-                    dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
                     ...cssLoaders,
                     {
                         loader: 'sass-loader',
@@ -91,15 +96,27 @@ let config = {
     },
 };
 
-module.exports = (env, argv) => {
+// the path(s) that should be cleaned
+let pathsToClean = [
+    'public/assets'
+];
 
-    if (argv.mode === 'development') {
-        config.devtool = 'cheap-eval-source-map';
+// the clean options to use
+let cleanOptions = {
+    root:     path.resolve('./'),
+    verbose:  true,
+    dry:      false
+};
+
+module.exports = () => {
+
+    if (dev) {
         config.watch = true;
+        config.devtool = 'cheap-eval-source-map';
         config.performance.hints = "warning";
     }
 
-    if (argv.mode === 'production') {
+    if (!dev) {
         config.optimization.minimizer.push(
             new uglifyJsPlugin({
                 sourceMap: true,
@@ -107,6 +124,8 @@ module.exports = (env, argv) => {
             })
         );
         config.performance.hints = false;
+        config.plugins.push(new ManifestPlugin());
+        config.plugins.push(new CleanWebpackPlugin(pathsToClean, cleanOptions));
     }
 
     return config;
