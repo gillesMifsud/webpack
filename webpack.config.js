@@ -3,10 +3,14 @@ const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const ENV = process.env.NODE_ENV;
-const dev = process.env.NODE_ENV === "dev";
+const dev = ENV === "dev";
 
 let cssLoaders = [
-    { loader: 'css-loader', options: {importLoaders: 1} },
+    { loader: 'css-loader',
+        options: {
+            importLoaders: 2
+        }
+    },
     { loader: 'postcss-loader',
         options: {
             ident: 'postcss',
@@ -26,7 +30,6 @@ let config = {
     mode: "development", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
     entry: './src/assets/js/app.js',
     output: {
-
         // options related to how webpack emits results
         path: path.resolve(__dirname, "public/assets"), // string
         // the target directory for all output files
@@ -43,22 +46,29 @@ let config = {
                 use: {
                     loader: 'babel-loader'
                 },
-                exclude: [/node_modules\/(?!(foundation-sites)\/).*/, /node_modules/],
+                exclude: [
+                    path.resolve(__dirname, "node_modules/util"),
+                    /node_modules\/(?!(foundation-sites)\/).*/,
+                    /node_modules/,
+                ],
             },
             {
                 test: /\.css$/,
                 use: cssLoaders
             },
             {
-                test: /\.(sa|sc|c)ss$/,
+                test: /\.(sa|sc)ss$/,
                 use: [
+                    // fallback to style-loader in development
                     dev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader',
+                    ...cssLoaders,
                     {
                         loader: 'sass-loader',
                         options: {
-                            includePaths: [path.resolve(__dirname, 'node_modules')],
+                            sourceMap: true,
+                            includePaths: [
+                                path.resolve(__dirname, 'node_modules/foundation-sites/scss')
+                            ]
                         },
                     }
                 ],
