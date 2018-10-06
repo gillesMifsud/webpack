@@ -51,6 +51,7 @@ let config = {
         }
     },
     devServer: {
+        overlay: true,
         contentBase: path.join(__dirname, './public')
     },
     module: {
@@ -132,7 +133,7 @@ let config = {
             // both options are optional
             filename: dev ? '[name].css' : '[name].[hash].css',
             chunkFilename: dev ? '[id].css' : '[id].[hash].css',
-        })
+        }),
     ],
     optimization: {
         minimizer: []
