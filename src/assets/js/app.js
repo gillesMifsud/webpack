@@ -8,4 +8,4 @@ window.$ = $
 
 $(document).foundation()
 
-test('toto')
+test('tato')

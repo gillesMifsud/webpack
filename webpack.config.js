@@ -37,7 +37,7 @@ let config = {
     },
     output: {
         // options related to how webpack emits results
-        path: path.resolve(__dirname, "public/assets"), // string
+        path: path.resolve(__dirname, "./public/assets"), // string
         // the target directory for all output files
         // must be an absolute path (use the Node.js path module)
         filename: dev ? '[name].js' : '[name].[hash].js', // string    // the filename template for entry chunks
@@ -49,6 +49,9 @@ let config = {
         alias: {
             '@assets-' : path.resolve(__dirname, 'src/assets/')
         }
+    },
+    devServer: {
+        contentBase: path.join(__dirname, './public')
     },
     module: {
         // configuration regarding modules
