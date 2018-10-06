@@ -2,7 +2,7 @@ const path = require('path');
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require('webpack-manifest-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const ENV = process.env.NODE_ENV;
 const dev = ENV === "dev";
@@ -10,7 +10,8 @@ const dev = ENV === "dev";
 let cssLoaders = [
     { loader: 'css-loader',
         options: {
-            importLoaders: 2
+            importLoaders: 1,
+            minimize: !dev
         }
     },
     { loader: 'postcss-loader',
@@ -42,10 +43,29 @@ let config = {
         filename: dev ? '[name].js' : '[name].[hash].js', // string    // the filename template for entry chunks
         publicPath: "/assets/", // string    // the url to the output directory resolved relative to the HTML page
     },
+    // Aliases
+    // Ex use in js file : import css from '@assets-scss/app.scss'
+    resolve: {
+        alias: {
+            '@assets-' : path.resolve(__dirname, 'src/assets/')
+        }
+    },
     module: {
         // configuration regarding modules
         rules: [
             // rules for modules (configure loaders, parser options, etc.)
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                use: {
+                    loader: 'eslint-loader'
+                },
+                exclude: [
+                    path.resolve(__dirname, "node_modules/util"),
+                    /node_modules\/(?!(foundation-sites)\/).*/,
+                    /node_modules/,
+                ],
+            },
             {
                 test: /\.js$/,
                 use: {
@@ -77,6 +97,29 @@ let config = {
                         },
                     }
                 ],
+            },
+            // Images & fonts, size < 8192 use base 64
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'file-loader'
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            name: '[name].[hash:7].[ext]'
+                        }
+                    },
+                    {
+                        loader: 'img-loader',
+                        options: {
+                            enabled: !dev
+                        }
+                    }
+                ]
             }
         ]
     },

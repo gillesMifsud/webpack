@@ -1,4 +1,3 @@
 export function test (value) {
-    console.log(value);
+  console.log(value)
 }
-
